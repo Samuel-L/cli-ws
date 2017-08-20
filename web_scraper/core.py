@@ -1,5 +1,5 @@
 import requests
-
+from requests.exceptions import ConnectionError, MissingSchema
 
 def return_html(url):
     try:
@@ -9,9 +9,12 @@ def return_html(url):
         else:
             return res.status_code
 
-    except requests.exceptions.ConnectionError as err:
-        print() # CREATE BAD URL ERROR AND RETURN
+    except (ConnectionError, MissingSchema) as err:
+        if type(err) == MissingSchema:
+            return f'INVALID URL: {url} misses schema! Did you mean: http://{url}'
+        elif type(err) == ConnectionError:
+            return f'INVALID URL: {url} does not exist!'
 
 
 if __name__ == '__main__':
-    print(return_html('http://motherfuckingwebsite.com/doesnotexist'))
+    print(return_html('mothserfuckingwebsite.com/'))
