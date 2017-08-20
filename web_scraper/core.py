@@ -17,4 +17,4 @@ def return_html(url):
 
 
 if __name__ == '__main__':
-    print(return_html('mothserfuckingwebsite.com/'))
+    pass
