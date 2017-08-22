@@ -4,7 +4,7 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests import helpers
-import test_elements as te
+from tests import test_elements
 
 from web_scraper import core
 from web_scraper import target_types
@@ -39,7 +39,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.element, 
             target_type=target_types.TAG
         )
-        self.assertEqual(te.li_elements, scrape_target_elements)
+        self.assertEqual(test_elements.li_elements, scrape_target_elements)
 
     def test_scrape_by_class_name(self):
         """method should return all class (specific class) elements from html"""
@@ -48,7 +48,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.class_name, 
             target_type=target_types.CLASS
         )
-        self.assertEqual(te.class_elements, scrape_target_elements)
+        self.assertEqual(test_elements.class_elements, scrape_target_elements)
 
     def test_scrape_by_id(self):
         """method should return all id (specific id) elements from html"""
@@ -57,7 +57,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.id_name, 
             target_type=target_types.ID
         )
-        self.assertEqual(te.id_elements, scrape_target_elements)
+        self.assertEqual(test_elements.id_elements, scrape_target_elements)
 
     def test_scrape_by_class_name_and_tag(self):
         """method should return all class (specific class and tag) elements from html"""
@@ -67,7 +67,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target_type=target_types.CLASS, 
             specific_tag='h2'
         )
-        self.assertEqual(te.tag_specific_class_elements, scrape_target_elements)
+        self.assertEqual(test_elements.tag_specific_class_elements, scrape_target_elements)
         
 
 if __name__ == '__main__':
