@@ -7,6 +7,7 @@ from bs4 import BeautifulSoup
 
 from web_scraper import target_types as tt
 
+
 def html_fetch(url):
     """Fetch html from url and return html
 
@@ -24,6 +25,7 @@ def html_fetch(url):
             return res.status_code, res.text
     except Exception as err:
         return err
+
 
 def target_fetch(html, target, target_type, specific_tag=''):
     """Fetch the target from the html
