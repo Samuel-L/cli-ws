@@ -1,3 +1,3 @@
-STANDARD = 'STANDARD'
-CLASS_ = 'CLASS_'
-ID = 'ID'
+TAG = 'tag'
+CLASS_ = 'class'
+ID = 'id'

@@ -35,15 +35,10 @@ def target_fetch(html, target, target_type):
     :rtype: str
     """
     soup = BeautifulSoup(str(html), 'html.parser')
-
-    if target_type == tt.STANDARD:
+    if target_type == tt.TAG:
         return str(soup.find_all(target))
-    elif target_type == tt.CLASS_:
-        return str(soup.find_all(class_=target))
-    elif target_type == tt.ID:
-        return str(soup.find_all(id=target))
     else:
-        return 0
+        return str(soup.find_all(attrs={target_type: target}))
 
 
 if __name__ == '__main__':

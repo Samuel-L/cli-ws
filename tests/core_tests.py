@@ -23,21 +23,25 @@ class TestHtmlFetchMethod(unittest.TestCase):
 
 class TestTargetFetchMethod(unittest.TestCase):
     """Test target_fetch(html, target)"""
+    def setUp(self):
+        self.html_changed = helpers.fetch_local_html('200status_changed')
+        self.html_normal = helpers.fetch_local_html('200status')
+        self.element = 'li'
+        self.class_name = 'test-class'
+        self.id_name = 'test-id'
     def test_target_fetch_li_elements(self):
         """method should return all li elements from html"""
-        html = helpers.fetch_local_html('200status')
-        element = 'li'
-        self.assertEqual(te.li_elements, core.target_fetch(html, element, tt.STANDARD))
+        self.assertEqual(te.li_elements, core.target_fetch(self.html_normal, target=self.element, target_type=tt.TAG))
     def test_target_fetch_class_elements(self):
         """method should return all class (specific class) elements from html"""
-        html = helpers.fetch_local_html('200status_changed')
-        class_name = 'test-class'
-        self.assertEqual(te.class_elements, core.target_fetch(html, class_name, tt.CLASS_))
+        self.assertEqual(te.class_elements, core.target_fetch(self.html_changed, target=self.class_name, target_type=tt.CLASS_))
     def test_target_fetch_id_elements(self):
         """method should return all id (specific id) elements from html"""
-        html = helpers.fetch_local_html('200status_changed')
-        id_name = 'test-id'
-        self.assertEqual(te.id_elements, core.target_fetch(html, id_name, tt.ID))
+        self.assertEqual(te.id_elements, core.target_fetch(self.html_changed, target=self.id_name, target_type=tt.ID))
+    #def test_target_fetch_tag_specific_class_elements(self):
+    #    """method should return all class (specific class and tag) elements from html"""
+        #self.assertEqual(te.tag_specific_class_elements)
+    #    pass
 
 if __name__ == '__main__':
     unittest.main()
