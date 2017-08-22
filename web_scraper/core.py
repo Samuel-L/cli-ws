@@ -28,13 +28,13 @@ def fetch_html_document(url):
 
 
 def scrape_target_elements(html, target, target_type, specific_tag=''):
-    """Fetch the target from the html
+    """Scrape the target from the html
 
-    :param str html: standard html
-    :param str target: a html element, id, or class
+    :param str html: standard html document
+    :param str target: name of tag, id or class
     :param str target_type: tag (html element such as <li>, <p>), id or class
     :param str specific_tag: if target_type is id or class, this optional argument
-    can be used to only fetch targets with this html tag
+    can be used to only scrape targets with this html tag
     :return: all fetched targets
     :rtype: str
     """
