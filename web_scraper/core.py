@@ -18,11 +18,11 @@ def fetch_html_document(url):
     :rtype: str
     """
     try:
-        res = requests.get(url)
-        if res.status_code == requests.codes.ok:
-            return res.status_code, res.text # html
+        response = requests.get(url)
+        if response.status_code == requests.codes.ok:
+            return response.status_code, response.text # html
         else:
-            return res.status_code, res.text
+            return response.status_code, rresponsees.text
     except Exception as err:
         return err
 
