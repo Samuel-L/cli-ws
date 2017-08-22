@@ -4,9 +4,10 @@ import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from tests import helpers
-from li_elements import li_elements
-from web_scraper import core
+import test_elements as te
 
+from web_scraper import core
+from web_scraper import target_types as tt
 
 class TestHtmlFetchMethod(unittest.TestCase):
     """Test html_fetch(url) method"""
@@ -25,7 +26,18 @@ class TestTargetFetchMethod(unittest.TestCase):
     def test_target_fetch_li_elements(self):
         """method should return all li elements from html"""
         html = helpers.fetch_local_html('200status')
-        self.assertEqual(li_elements, core.target_fetch(html, 'li'))
+        element = 'li'
+        self.assertEqual(te.li_elements, core.target_fetch(html, element, tt.STANDARD))
+    def test_target_fetch_class_elements(self):
+        """method should return all class (specific class) elements from html"""
+        html = helpers.fetch_local_html('200status_changed')
+        class_name = 'test-class'
+        self.assertEqual(te.class_elements, core.target_fetch(html, class_name, tt.CLASS_))
+    def test_target_fetch_id_elements(self):
+        """method should return all id (specific id) elements from html"""
+        html = helpers.fetch_local_html('200status_changed')
+        id_name = 'test-id'
+        self.assertEqual(te.id_elements, core.target_fetch(html, id_name, tt.ID))
 
 if __name__ == '__main__':
     unittest.main()

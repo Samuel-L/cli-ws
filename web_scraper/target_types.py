@@ -1,0 +1,3 @@
+STANDARD = 'STANDARD'
+CLASS_ = 'CLASS_'
+ID = 'ID'

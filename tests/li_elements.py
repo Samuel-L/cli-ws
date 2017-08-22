@@ -1,1 +1,0 @@
-li_elements = "[<li>Shit\'s lightweight and loads fast</li>, <li>Fits on all your shitty screens</li>, <li>Looks the same in all your shitty browsers</li>, <li>The motherfucker\'s accessible to every asshole that visits your site</li>, <li>Shit\'s legible and gets your fucking point across (if you had one instead of just 5mb pics of hipsters drinking coffee)</li>]"
