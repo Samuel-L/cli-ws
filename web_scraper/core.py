@@ -45,11 +45,6 @@ def target_fetch(html, target, target_type):
     else:
         return 0
 
-def fetch_local_html(html):
-    with open(f'./tests/{html}.html', 'r') as file:
-        return file.read()
-
-
 
 if __name__ == '__main__':
     pass
