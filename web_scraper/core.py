@@ -25,12 +25,14 @@ def html_fetch(url):
     except Exception as err:
         return err
 
-def target_fetch(html, target, target_type):
+def target_fetch(html, target, target_type, specific_tag=''):
     """Fetch the target from the html
 
     :param str html: standard html
     :param str target: a html element, id, or class
-    :param str target_type: standard (html element such as <li>, <p>), id or class
+    :param str target_type: tag (html element such as <li>, <p>), id or class
+    :param str specific_tag: if target_type is id or class, this optional argument
+    can be used to only fetch targets with this html tag
     :return: all fetched targets or not found
     :rtype: str
     """
@@ -38,7 +40,7 @@ def target_fetch(html, target, target_type):
     if target_type == tt.TAG:
         return str(soup.find_all(target))
     else:
-        return str(soup.find_all(attrs={target_type: target}))
+        return str(soup.find_all(specific_tag, attrs={target_type: target}))
 
 
 if __name__ == '__main__':

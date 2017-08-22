@@ -1,3 +1,3 @@
 TAG = 'tag'
-CLASS_ = 'class'
+CLASS = 'class'
 ID = 'id'

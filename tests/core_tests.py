@@ -34,14 +34,14 @@ class TestTargetFetchMethod(unittest.TestCase):
         self.assertEqual(te.li_elements, core.target_fetch(self.html_normal, target=self.element, target_type=tt.TAG))
     def test_target_fetch_class_elements(self):
         """method should return all class (specific class) elements from html"""
-        self.assertEqual(te.class_elements, core.target_fetch(self.html_changed, target=self.class_name, target_type=tt.CLASS_))
+        self.assertEqual(te.class_elements, core.target_fetch(self.html_changed, target=self.class_name, target_type=tt.CLASS))
     def test_target_fetch_id_elements(self):
         """method should return all id (specific id) elements from html"""
         self.assertEqual(te.id_elements, core.target_fetch(self.html_changed, target=self.id_name, target_type=tt.ID))
-    #def test_target_fetch_tag_specific_class_elements(self):
-    #    """method should return all class (specific class and tag) elements from html"""
-        #self.assertEqual(te.tag_specific_class_elements)
-    #    pass
+    def test_target_fetch_tag_specific_class_elements(self):
+        """method should return all class (specific class and tag) elements from html"""
+        self.assertEqual(te.tag_specific_class_elements, core.target_fetch(self.html_changed, target=self.class_name, target_type=tt.CLASS, specific_tag='h2'))
+        
 
 if __name__ == '__main__':
     unittest.main()
