@@ -1,7 +1,7 @@
 import requests
 from requests.exceptions import ConnectionError, MissingSchema
 
-def return_html(url):
+def html_fetch(url):
     """Fetch html from url and return html
 
     :param str url: an address to a resource on the Internet
