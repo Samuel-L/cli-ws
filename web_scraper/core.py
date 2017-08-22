@@ -1,5 +1,5 @@
 import requests
-from requests.exceptions import ConnectionError, MissingSchema
+
 
 def html_fetch(url):
     """Fetch html from url and return html

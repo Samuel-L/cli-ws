@@ -3,8 +3,6 @@ import sys
 import unittest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from requests.exceptions import ConnectionError
-
 from tests import helpers
 from web_scraper import core
 
