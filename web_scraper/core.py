@@ -14,12 +14,8 @@ def return_html(url):
             return res.text # html
         else:
             return res.status_code
-
-    except (ConnectionError, MissingSchema) as err:
-        if type(err) == MissingSchema:
-            return f'INVALID URL: {url} misses schema! Did you mean: http://{url}'
-        elif type(err) == ConnectionError:
-            return f'INVALID URL: {url} does not exist!'
+    except Exception as err:
+        return err
 
 
 if __name__ == '__main__':

@@ -19,20 +19,6 @@ class TestReturnHtmlMethod(unittest.TestCase):
         """method should return status code if 404 (file not found)"""
         url = 'http://motherfuckingwebsite.com/doesnotexist'
         self.assertEqual(404, core.return_html(url))
-    def test_faulty_url(self):
-        """method should return bad url error if url is faulty"""
-        url = 'http://www.dkmawdjodiw.com/'
-        self.assertEqual(
-            f'INVALID URL: {url} does not exist!',
-            core.return_html(url)
-        )
-    def test_missing_schema_url(self):
-        """method should return 'missing schema' if url misses it"""
-        url = 'dkmawdjodiw.com/'
-        self.assertEqual(
-            f'INVALID URL: {url} misses schema! Did you mean: http://{url}',
-            core.return_html(url)
-        )
 
 
 if __name__ == '__main__':
