@@ -35,7 +35,7 @@ def target_fetch(html, target, target_type, specific_tag=''):
     :param str target_type: tag (html element such as <li>, <p>), id or class
     :param str specific_tag: if target_type is id or class, this optional argument
     can be used to only fetch targets with this html tag
-    :return: all fetched targets or not found
+    :return: all fetched targets
     :rtype: str
     """
     soup = BeautifulSoup(str(html), 'html.parser')
