@@ -44,6 +44,13 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     else:
         return str(soup.find_all(specific_tag, attrs={target_type: target}))
 
-
+def fetch_local_html(html):
+    with open(f'./tests/html_for_tests/{html}.html', 'r') as file:
+        return file.read()
 if __name__ == '__main__':
-    pass
+    html = fetch_local_html('200status_changed')
+    print(scrape_target_elements(
+            html, 
+            target='test-id', 
+            target_type=target_types.ID, 
+        ))

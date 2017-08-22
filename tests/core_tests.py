@@ -33,7 +33,7 @@ class TestTargetFetchMethod(unittest.TestCase):
         self.id_name = 'test-id'
 
     def test_scrape_by_tag(self):
-        """method should return all li elements from html"""
+        """method should return all li elements"""
         scrape_target_elements = core.scrape_target_elements(
             self.html_normal, 
             target=self.element, 
@@ -42,7 +42,7 @@ class TestTargetFetchMethod(unittest.TestCase):
         self.assertEqual(test_elements.li_elements, scrape_target_elements)
 
     def test_scrape_by_class_name(self):
-        """method should return all class (specific class) elements from html"""
+        """method should return all elements with the class 'test-class'"""
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed, 
             target=self.class_name, 
@@ -51,7 +51,7 @@ class TestTargetFetchMethod(unittest.TestCase):
         self.assertEqual(test_elements.class_elements, scrape_target_elements)
 
     def test_scrape_by_id(self):
-        """method should return all id (specific id) elements from html"""
+        """method should return elements with the id 'test-id'"""
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed, 
             target=self.id_name, 
@@ -60,7 +60,7 @@ class TestTargetFetchMethod(unittest.TestCase):
         self.assertEqual(test_elements.id_elements, scrape_target_elements)
 
     def test_scrape_by_class_name_and_tag(self):
-        """method should return all class (specific class and tag) elements from html"""
+        """method should return all elements with the class 'test-class' and 'h2' tag"""
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed, 
             target=self.class_name, 
@@ -68,7 +68,16 @@ class TestTargetFetchMethod(unittest.TestCase):
             specific_tag='h2'
         )
         self.assertEqual(test_elements.tag_specific_class_elements, scrape_target_elements)
-        
+    
+    def test_scrape_by_id_and_tag(self):
+        """method should return all elements with the 'test-id' id and 'h2' tag"""
+        scrape_target_elements = core.scrape_target_elements(
+            self.html_changed,
+            target=self.id_name,
+            target_type=target_types.ID,
+            specific_tag='h2'
+        )
+        self.assertEqual(test_elements.tag_specific_id_elements, scrape_target_elements)
 
 if __name__ == '__main__':
     unittest.main()
