@@ -39,7 +39,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.element, 
             target_type=target_types.TAG
         )
-        self.assertEqual(test_elements.li_elements, scrape_target_elements)
+        self.assertEqual(test_elements.li_elements, str(scrape_target_elements))
 
     def test_scrape_by_class_name(self):
         """method should return all elements with the class 'test-class'"""
@@ -48,7 +48,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.class_name, 
             target_type=target_types.CLASS
         )
-        self.assertEqual(test_elements.class_elements, scrape_target_elements)
+        self.assertEqual(test_elements.class_elements, str(scrape_target_elements))
 
     def test_scrape_by_id(self):
         """method should return elements with the id 'test-id'"""
@@ -57,7 +57,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target=self.id_name, 
             target_type=target_types.ID
         )
-        self.assertEqual(test_elements.id_elements, scrape_target_elements)
+        self.assertEqual(test_elements.id_elements, str(scrape_target_elements))
 
     def test_scrape_by_class_name_and_tag(self):
         """method should return all elements with the class 'test-class' and 'h2' tag"""
@@ -67,7 +67,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target_type=target_types.CLASS, 
             specific_tag='h2'
         )
-        self.assertEqual(test_elements.tag_specific_class_elements, scrape_target_elements)
+        self.assertEqual(test_elements.tag_specific_class_elements, str(scrape_target_elements))
     
     def test_scrape_by_id_and_tag(self):
         """method should return all elements with the 'test-id' id and 'h2' tag"""
@@ -77,7 +77,7 @@ class TestTargetFetchMethod(unittest.TestCase):
             target_type=target_types.ID,
             specific_tag='h2'
         )
-        self.assertEqual(test_elements.tag_specific_id_elements, scrape_target_elements)
+        self.assertEqual(test_elements.tag_specific_id_elements, str(scrape_target_elements))
 
 if __name__ == '__main__':
     unittest.main()

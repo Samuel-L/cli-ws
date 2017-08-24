@@ -40,9 +40,9 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     """
     soup = BeautifulSoup(str(html), 'html.parser')
     if target_type == target_types.TAG:
-        return str(soup.find_all(target))
+        return soup.find_all(target)
     else:
-        return str(soup.find_all(specific_tag, attrs={target_type: target}))
+        return soup.find_all(specific_tag, attrs={target_type: target})
 
 
 if __name__ == '__main__':
