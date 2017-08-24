@@ -38,7 +38,7 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     :return: all fetched targets
     :rtype: str
     """
-    soup = BeautifulSoup(str(html), 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
     if target_type == target_types.TAG:
         return soup.find_all(target)
     else:
