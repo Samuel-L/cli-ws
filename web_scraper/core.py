@@ -46,6 +46,5 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
 
 
 if __name__ == '__main__':
-    doc = fetch_html_document('http://motherfuckingwebsite.com/')
-    data = scrape_target_elements(str(doc), target='li', target_type='tag')
-    print(type(data))
+    pass
+
