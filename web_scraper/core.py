@@ -46,7 +46,7 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
 
 
 def prettify_scraped_data(scraped_data):
-    """Return more presentable data provided by scrape_target_elements()
+    """Return more presentable data (in a list) provided by scrape_target_elements()
 
     :param bs4.element.ResultSet scraped_data: all of the data scraped by scrape_target_elements()
     :return: list of presentable data
