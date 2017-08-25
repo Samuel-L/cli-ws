@@ -23,7 +23,7 @@ class TestFetchHtmlDocumenthMethod(unittest.TestCase):
         self.assertEqual((404, helpers.fetch_local_html('404status')), core.fetch_html_document(url))
 
 
-class TestTargetFetchMethod(unittest.TestCase):
+class TestScrapeTargetElementsMethod(unittest.TestCase):
     """Test target_fetch(html, target)"""
     def setUp(self):
         self.html_changed = helpers.fetch_local_html('200status_changed')
