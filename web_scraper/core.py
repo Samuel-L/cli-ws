@@ -33,10 +33,10 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     :param str html: standard html document
     :param str target: name of tag, id or class
     :param str target_type: tag (html element such as <li>, <p>), id or class
-    :param str specific_tag: if target_type is id or class, this optional argument
+    :param str specific_tag: (optional) if target_type is id or class, this argument
     can be used to only scrape targets with this html tag
     :return: all fetched targets
-    :rtype: str
+    :rtype: bs4.element.ResultSet
     """
     soup = BeautifulSoup(html, 'html.parser')
     if target_type == target_types.TAG:
@@ -46,4 +46,6 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
 
 
 if __name__ == '__main__':
-    pass
+    doc = fetch_html_document('http://motherfuckingwebsite.com/')
+    data = scrape_target_elements(str(doc), target='li', target_type='tag')
+    print(type(data))
