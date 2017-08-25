@@ -45,6 +45,19 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
         return soup.find_all(specific_tag, attrs={target_type: target})
 
 
+def prettify_scraped_data(scraped_data):
+    """Return more presentable data provided by scrape_target_elements()
+
+    :param bs4.element.ResultSet scraped_data: all of the data scraped by scrape_target_elements()
+    :return: list of presentable data
+    :rtype: list
+    """
+    data_list = []
+    for data in scraped_data:
+        data_list.append(data.text)
+    return data_list
+
+
 if __name__ == '__main__':
     pass
 
