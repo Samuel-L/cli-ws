@@ -5,8 +5,6 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 from bs4 import BeautifulSoup
 
-from web_scraper import target_types
-
 
 def fetch_html_document(url):
     """Fetch html from url and return html
@@ -39,7 +37,7 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     :rtype: bs4.element.ResultSet
     """
     soup = BeautifulSoup(html, 'html.parser')
-    if target_type == target_types.TAG:
+    if target_type == 'tag':
         return soup.find_all(target)
     else:
         return soup.find_all(specific_tag, attrs={target_type: target})

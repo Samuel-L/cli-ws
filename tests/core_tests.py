@@ -7,7 +7,6 @@ from tests import helpers
 from tests import test_elements
 
 from web_scraper import core
-from web_scraper import target_types
 
 
 class TestFetchHtmlDocumenthMethod(unittest.TestCase):
@@ -37,7 +36,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         scrape_target_elements = core.scrape_target_elements(
             self.html_normal,
             target=self.element,
-            target_type=target_types.TAG
+            target_type='tag'
         )
         self.assertEqual(test_elements.li_elements, str(scrape_target_elements))
 
@@ -46,7 +45,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed,
             target=self.class_name,
-            target_type=target_types.CLASS
+            target_type='class'
         )
         self.assertEqual(test_elements.class_elements, str(scrape_target_elements))
 
@@ -55,7 +54,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed,
             target=self.id_name,
-            target_type=target_types.ID
+            target_type='id'
         )
         self.assertEqual(test_elements.id_elements, str(scrape_target_elements))
 
@@ -64,7 +63,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed,
             target=self.class_name,
-            target_type=target_types.CLASS,
+            target_type='class',
             specific_tag='h2'
         )
         self.assertEqual(test_elements.tag_specific_class_elements, str(scrape_target_elements))
@@ -74,7 +73,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         scrape_target_elements = core.scrape_target_elements(
             self.html_changed,
             target=self.id_name,
-            target_type=target_types.ID,
+            target_type='id',
             specific_tag='h2'
         )
         self.assertEqual(test_elements.tag_specific_id_elements, str(scrape_target_elements))
