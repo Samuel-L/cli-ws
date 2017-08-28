@@ -85,12 +85,12 @@ class TestSaveDataToFile(unittest.TestCase):
         self.data = ['item1', 'item2', 'item3']
         filename = 'dataFile'
         self.created_file_location = core.save_data_to_file(self.data, filename=filename)
-    
+
     def test_creates_file(self):
         """method should have created a file and returned its location"""
         file_exists = os.path.isfile(self.created_file_location)
         self.assertTrue(file_exists)
-    
+
     def test_saved_data_is_correct(self):
         with open(self.created_file_location, 'r') as created_file:
             written_data = created_file.readlines()
