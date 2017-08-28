@@ -70,7 +70,7 @@ def save_data_to_file(data, filename='data', location='./'):
     while os.path.isfile(filename):
         filename = f'{filename}_{random.randint(10000, 50000)}.txt'
     
-    with open(f'{location}\\{filename}', 'w') as data_file:
+    with open(f'{location}{filename}', 'w') as data_file:
         for item in data:
             data_file.write(f'{item}\n')
     return f'{location}\\{filename}'
