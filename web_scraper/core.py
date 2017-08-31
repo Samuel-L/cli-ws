@@ -44,6 +44,29 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
         return soup.find_all(specific_tag, attrs={target_type: target})
 
 
+def scrape_links(domain_name, html):
+    """Scrape all links from the html
+
+    :param str domain_name: the domain name of the website you're scraping
+    :param str html: standard html document
+    :return: all scraped links
+    :rtype: list
+    """
+    soup = BeautifulSoup(str(html), 'html.parser')
+    link_list = []
+    for link in soup.find_all('a'):
+        link = link.get('href')
+
+        # If link only includes a path to a page on the website (internal link),
+        # add the domain name here.
+        if domain_name not in link:
+            link = f'{domain_name}{link}'
+
+        link_list.append(link)
+
+    return link_list
+
+
 def prettify_scraped_data(scraped_data):
     """Return more presentable data (in a list) provided by scrape_target_elements()
 

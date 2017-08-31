@@ -79,6 +79,16 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
         self.assertEqual(test_elements.tag_specific_id_elements, str(scrape_target_elements))
 
 
+class TestLinkScraper(unittest.TestCase):
+    """Test scrape_links()"""
+    def test_scrapes_links(self):
+        """method should return all links (list) with the domain name included"""
+        link_list = core.scrape_links(
+            domain_name='https://github.com', html=test_elements.links
+        )
+        self.assertEqual(test_elements.links_list, link_list)
+
+
 class TestSaveDataToFile(unittest.TestCase):
     """Test save_data_to_file()"""
     def setUp(self):
