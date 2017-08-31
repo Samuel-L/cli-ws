@@ -34,7 +34,7 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
     :param str target_type: tag (html element such as <li>, <p>), id or class
     :param str specific_tag: (optional) if target_type is id or class, this argument
     can be used to only scrape targets with this html tag
-    :return: all fetched targets
+    :return: all scraped targets
     :rtype: bs4.element.ResultSet
     """
     soup = BeautifulSoup(html, 'html.parser')
