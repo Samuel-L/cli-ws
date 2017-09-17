@@ -14,9 +14,9 @@ def save_data_to_file(data, filename='data', location='./'):
     :return: file location
     :rtype: str
     """
-    filename = f'{filename}_{random.randint(10000, 50000)}.txt'
+    filename = f'{filename}_{random.randint(10000, 50000)}.csv'
     while os.path.isfile(filename):
-        filename = f'{filename}_{random.randint(10000, 50000)}.txt'
+        filename = f'{filename}_{random.randint(10000, 50000)}.csv'
 
     with open(f'{location}{filename}', 'w') as data_file:
         for item in data:
