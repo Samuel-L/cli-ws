@@ -49,7 +49,6 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 
 	# when run_task invokes this function, dont_save is a string, not a bool.	
 	if dont_save is True or dont_save == 'True':
-		print(dont_save, dont_save=='True')
 		for data in scraped_data:
 			click.echo(data)
 	else:
