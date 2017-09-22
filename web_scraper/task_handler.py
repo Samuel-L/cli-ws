@@ -8,7 +8,7 @@ def _create_task_file(name):
 	"""Create a taskfile
 	:param str name: the name of the taskfile
 	"""
-	with open(f'{name}.taskfile.csv', 'w', newline='') as taskfile:
+	with open('taskfile.csv', 'w', newline='') as taskfile:
 		writer = csv.writer(taskfile, delimiter=',', quotechar='"',
 			quoting=csv.QUOTE_MINIMAL
 		)
@@ -40,7 +40,7 @@ def create_task(task_name, url, target,
 	if not os.path.isfile(f'{task_file}.taskfile.csv'):
 		_create_task_file(task_file)
 
-	with open(f'{task_file}.taskfile.csv', 'a', newline='') as taskfile:
+	with open('taskfile.csv', 'a', newline='') as taskfile:
 		writer = csv.writer(taskfile, delimiter=',', quotechar='"',
 			quoting=csv.QUOTE_NONNUMERIC
 		)
