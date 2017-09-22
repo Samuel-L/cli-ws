@@ -147,6 +147,10 @@ def show_task(show_all, group, task_name):
 		task = task_handler.return_task(task_name=task_name)
 		_echo_task(task)
 		click.echo('\n')
+	else:
+		click.echo('You must choose one of the options!\n'
+			'To view the options, type: cli-ws show_task --help'
+		)
 
 if __name__ == '__main__':
 	cli.add_command(scrape)
