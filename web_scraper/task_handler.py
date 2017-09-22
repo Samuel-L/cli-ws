@@ -37,8 +37,8 @@ def create_task(task_name, url, target,
 	:opt param str path: the path for the data file
 	:opt param bool dont_save: don't save the data to a file
 	"""
-	if not os.path.isfile(f'{task_file}.taskfile.csv'):
-		_create_task_file(task_file)
+	if not os.path.isfile('taskfile.csv'):
+		_create_task_file('taskfile.csv')
 
 	with open('taskfile.csv', 'a', newline='') as taskfile:
 		writer = csv.writer(taskfile, delimiter=',', quotechar='"',
