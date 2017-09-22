@@ -19,12 +19,11 @@ def _create_task_file(name):
 		])
 
 
-def create_task(task_file, task_name, url, target, 
+def create_task(task_name, url, target, 
 	target_type, task_group='', specific_tag='',
 	no_prettify='', regex='', filename='', path='', dont_save=''):
 	"""Append a task to the taskfile
 
-	:param str task_file: the name of the taskfile
 	:param str task_name: the name of the task
 	:param str url: a standard website url
 	:param str target: the target for scraping
@@ -50,14 +49,13 @@ def create_task(task_file, task_name, url, target,
 			filename, path, dont_save, task_group
 		])
 
-def return_task(task_file, task_name):
+def return_task(task_name):
 	"""Return the task
-	:param str task_file: name of the taskfile
 	:param str task_name: name of the task
 	:return: the task or False
 	:rtype: OrderedDict or bool
 	"""
-	with open(f'{task_file}.taskfile.csv', 'r') as taskfile:
+	with open('taskfile.csv', 'r') as taskfile:
 		reader = csv.DictReader(taskfile)
 
 		for task in reader:

@@ -60,7 +60,6 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 
 
 @click.command()
-@click.argument('task_file')
 @click.argument('task_name')
 @click.argument('url')
 @click.argument('target')
@@ -76,8 +75,6 @@ def create_task(task_file, task_name, url, target, target_type, task_group, no_p
 	regex, filename, path, dont_save, specific_tag):
 	"""Create a task
 	
-	TASK_FILE name of the taskfile
-
 	TASK_NAME name of the task
 
 	URL         The url of the website you wish to scrape
@@ -86,7 +83,7 @@ def create_task(task_file, task_name, url, target, target_type, task_group, no_p
 
 	TARGET_TYPE The type of target you want to scrape (tag, class or id)
 	"""
-	task_handler.create_task(task_file, task_name, url, target, target_type,
+	task_handler.create_task(task_name, url, target, target_type,
 		task_group=task_group, no_prettify=no_prettify, regex=regex, filename=filename,
 		path=path, dont_save=dont_save)
 
@@ -94,13 +91,10 @@ def create_task(task_file, task_name, url, target, target_type, task_group, no_p
 
 
 @click.command()
-@click.argument('task_file')
 @click.argument('task_name')
 @click.pass_context
-def run_task(ctx, task_file, task_name):
+def run_task(ctx, task_name):
 	"""Run a task
-
-	TASK_FILE name of the taskfile
 
 	TASK_NAME name of the task
 	"""
