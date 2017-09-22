@@ -50,20 +50,35 @@ def create_task(task_name, url, target,
 			filename, path, dont_save, task_group
 		])
 
-def return_task(task_name):
+def return_task(task_name='', task_group='', all_tasks=False):
 	"""Return the task
-	:param str task_name: name of the task
+	:opt param str task_name: name of the task
+	:opt param str task_group: group name of one or more tasks
+	:opt param bool all_tasks: return all tasks
 	:return: the task or False
 	:rtype: OrderedDict or bool
 	"""
 	with open('taskfile.csv', 'r') as taskfile:
 		reader = csv.DictReader(taskfile)
+		task_list = []
 
-		for task in reader:
-			if task['task_name'] == task_name:
-				return task
+		if task_name:
+			for task in reader:
+				if task['task_name'] == task_name:
+					return task
+			return False
+		elif task_group:
+			for task in reader:
+				if task['task_group'] == task_group:
+					task_list.append(task)
+			return task_list
+		elif all_tasks:
+			for task in reader:
+				task_list.append(task)
+			return task_list
+		else:
+			return False
 
-		return False
 
 
 def remove_task(task_name):
