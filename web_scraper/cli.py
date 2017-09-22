@@ -71,7 +71,7 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 @click.option('--filename', default='data', help='Save the file with this name.')
 @click.option('--path', default='./', help='Save the file to this path.')
 @click.option('--dont-save', is_flag=True, help='Don\'t save the data to a file, only output it.')
-def create_task(task_file, task_name, url, target, target_type, task_group, no_prettify,
+def create_task(task_name, url, target, target_type, task_group, no_prettify,
 	regex, filename, path, dont_save, specific_tag):
 	"""Create a task
 	
@@ -87,7 +87,7 @@ def create_task(task_file, task_name, url, target, target_type, task_group, no_p
 		task_group=task_group, no_prettify=no_prettify, regex=regex, filename=filename,
 		path=path, dont_save=dont_save)
 
-	click.echo(f'Added task "{task_name}" to {task_file}.taskfile.csv')
+	click.echo(f'Added task "{task_name}" to taskfile.csv')
 
 
 @click.command()
@@ -98,7 +98,7 @@ def run_task(ctx, task_name):
 
 	TASK_NAME name of the task
 	"""
-	task = task_handler.return_task(task_file, task_name)
+	task = task_handler.return_task(task_name)
 
 	ctx.invoke(scrape, url=task['url'], target=task['target'], target_type=task['target_type'],
 		no_prettify=task['no_prettify'], regex=task['regex'],
