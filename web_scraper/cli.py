@@ -51,12 +51,13 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 	if dont_save is True or dont_save == 'True':
 		for data in scraped_data:
 			click.echo(data)
+		click.echo('\n')
 	else:
 		created_file_path = file_handlers.save_data_to_file(scraped_data,
 			filename=filename,
 			location=path
 		)
-		click.echo(f'Data saved to {created_file_path}')
+		click.echo(f'Data saved to {created_file_path}\n')
 
 
 @click.command()
@@ -90,21 +91,40 @@ def create_task(task_name, url, target, target_type, task_group, no_prettify,
 	click.echo(f'Added task "{task_name}" to taskfile.csv')
 
 
-@click.command()
-@click.argument('task_name')
-@click.pass_context
-def run_task(ctx, task_name):
-	"""Run a task
-
-	TASK_NAME name of the task
-	"""
-	task = task_handler.return_task(task_name=task_name)
-
+def _invoke_scrape(ctx, task):
 	ctx.invoke(scrape, url=task['url'], target=task['target'], target_type=task['target_type'],
 		no_prettify=task['no_prettify'], regex=task['regex'],
 		filename=task['filename'], path=task['path'], dont_save=task['dont_save'],
 		specific_tag=task['specific_tag']
 	)
+
+
+@click.command()
+@click.option('--run-all', is_flag=True, help='Run all tasks')
+@click.option('--task-group', default=False, help='Run tasks from this group')
+@click.option('--task-name', default=False, help='Run this task')
+@click.pass_context
+def run_task(ctx, run_all, task_group, task_name):
+	"""Run a task
+
+	Must choose one of the options down below.
+	"""
+
+	if run_all:
+		tasks = task_handler.return_task(all_tasks=True)
+		for task in tasks:
+			_invoke_scrape(ctx, task)
+	elif task_group:
+		tasks = task_handler.return_task(task_group=task_group)
+		for task in tasks:
+			_invoke_scrape(ctx, task)
+	elif task_name:
+		task = task_handler.return_task(task_name=task_name)
+		_invoke_scrape(ctx, task)
+	else:
+		click.echo('You must choose one of the options!\n'
+			'To view the options, type: cli-ws run_task --help'
+		)
 
 
 @click.command()
@@ -125,9 +145,9 @@ def _echo_task(task):
 
 @click.command()
 @click.option('--show-all', is_flag=True, help='Show all tasks')
-@click.option('--group', default=False, help='Show tasks from this group')
+@click.option('--task-group', default=False, help='Show tasks from this group')
 @click.option('--task-name', default=False, help='Show this task')
-def show_task(show_all, group, task_name):
+def show_task(show_all, task_group, task_name):
 	""" Show task
 
 	Must choose one of the options down below.
@@ -138,8 +158,8 @@ def show_task(show_all, group, task_name):
 		for task in tasks:
 			_echo_task(task)
 			click.echo('\n')
-	elif group:
-		tasks = task_handler.return_task(task_group=group)
+	elif task_group:
+		tasks = task_handler.return_task(task_group=task_group)
 		for task in tasks:
 			_echo_task(task)
 			click.echo('\n')
