@@ -118,9 +118,22 @@ def remove_task(task_name):
 	click.echo(f'Task "{task_name}" has been removed.')
 
 
+@click.command()
+@click.argument('task_name')
+def show_task(task_name):
+	""" Show task
+
+	TASK_NAME name of task
+	"""
+	task = task_handler.return_task(task_name)
+	for column, value in task.items():
+		click.echo(f'{column}: {value}\n')
+
+
 if __name__ == '__main__':
 	cli.add_command(scrape)
 	cli.add_command(create_task)
 	cli.add_command(run_task)
 	cli.add_command(remove_task)
+	cli.add_command(show_task)
 	cli()
