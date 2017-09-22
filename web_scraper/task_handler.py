@@ -3,6 +3,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import csv
+import shutil
 
 def _create_task_file(name):
 	"""Create a taskfile
@@ -63,3 +64,28 @@ def return_task(task_name):
 				return task
 
 		return False
+
+
+def remove_task(task_name):
+	"""Remove the task
+	:param str task_name: name of the task
+	:return: true or false depending on if the task was removed
+	:rtype: bool
+	"""
+	fieldnames = ['task_name', 'url', 'target', 'target_type',
+		'specific_tag', 'no_prettify', 'regex', 'filename',
+		'path', 'dont_save', 'task_group'
+	]
+
+	with open('taskfile.csv', 'r') as taskfile, open('output.csv', 'w') as outfile:
+		reader = csv.DictReader(taskfile, fieldnames=fieldnames)
+		writer = csv.writer(outfile)
+
+		for row in reader:
+			if not task_name in row['task_name']:
+				writer.writerow([row['task_name'], row['url'], row['target'],
+					row['target_type'], row['specific_tag'], row['no_prettify'],
+					row['regex'], row['filename'], row['path'], row['dont_save'],
+					row['task_group']
+				])
+	shutil.move('output.csv','taskfile.csv')

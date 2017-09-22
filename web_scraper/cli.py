@@ -45,7 +45,7 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 	if not no_prettify or no_prettify == 'False':
 		scraped_data = prettifiers.simple_prettifier(scraped_data)
 		if regex:
-			scraped_data = prettifiers.regex_prettifier(scraped_data, regex_prettifier)
+			scraped_data = prettifiers.regex_prettifier(scraped_data, regex)
 
 	# when run_task invokes this function, dont_save is a string, not a bool.	
 	if dont_save is True or dont_save == 'True':
@@ -104,11 +104,23 @@ def run_task(ctx, task_name):
 		no_prettify=task['no_prettify'], regex=task['regex'],
 		filename=task['filename'], path=task['path'], dont_save=task['dont_save'],
 		specific_tag=task['specific_tag']
-	)	
+	)
+
+
+@click.command()
+@click.argument('task_name')
+def remove_task(task_name):
+	"""Remove a task
+	TASK_NAME name of task
+	"""
+	task_handler.remove_task(task_name)
+
+	click.echo(f'Task "{task_name}" has been removed.')
 
 
 if __name__ == '__main__':
 	cli.add_command(scrape)
 	cli.add_command(create_task)
 	cli.add_command(run_task)
+	cli.add_command(remove_task)
 	cli()
