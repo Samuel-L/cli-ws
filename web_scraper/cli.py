@@ -127,7 +127,8 @@ def show_task(task_name):
 	"""
 	task = task_handler.return_task(task_name)
 	for column, value in task.items():
-		click.echo(f'{column}: {value}\n')
+		click.echo(f'{column}: {value}')
+	click.echo('\n')
 
 
 if __name__ == '__main__':
