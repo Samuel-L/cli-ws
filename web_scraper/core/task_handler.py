@@ -5,6 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import csv
 import shutil
 
+
 def _create_task_file(name):
 	"""Create a taskfile
 	:param str name: the name of the taskfile
@@ -50,6 +51,7 @@ def create_task(task_name, url, target,
 			filename, path, dont_save, task_group
 		])
 
+
 def return_task(task_name='', task_group='', all_tasks=False):
 	"""Return the task
 	:opt param str task_name: name of the task
@@ -78,7 +80,6 @@ def return_task(task_name='', task_group='', all_tasks=False):
 			return task_list
 		else:
 			return False
-
 
 
 def remove_task(task_name):

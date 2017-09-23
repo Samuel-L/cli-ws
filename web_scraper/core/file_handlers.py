@@ -39,4 +39,3 @@ def read_file_into_list(file_location):
             proxies.append(line)
 
     return return_list
-

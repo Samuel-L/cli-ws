@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import re
 
+
 def simple_prettifier(scraped_data):
     """Return more presentable data (in a list) provided by scrape_target_elements()
 
@@ -30,4 +31,3 @@ def regex_prettifier(scraped_data, regex):
     for data in scraped_data:
         data_list.append(re.sub(regex, '', data))
     return data_list
-

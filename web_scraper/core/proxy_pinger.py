@@ -1,6 +1,7 @@
 from platform import system as system_name
 from os import system as system_call
 
+
 def ping_several_hosts(hosts_list):
     """ Ping all hosts in hosts_list and return dict with statuses of hosts
 
@@ -31,4 +32,3 @@ def ping(host):
     parameters = "-n 1" if system_name().lower() == "windows" else "-c 1"
 
     return system_call(f"ping {parameters} {host}") == 0
-
