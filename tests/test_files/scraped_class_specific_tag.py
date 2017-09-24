@@ -1,0 +1,1 @@
+scraped_class_specific_tag = '''[<p class="class-name">P tag with class</p>]'''
