@@ -12,7 +12,7 @@ from tests.test_files import (
 )
 
 
-class TestScrapeTargetElementsMethod(unittest.TestCase):
+class TestScrapeTargetElementsFunction(unittest.TestCase):
 	def setUp(self):
 		self.html_document = helpers.return_html_document()
 		self.scraped_tags = scraped_tags.tag_elements
@@ -45,7 +45,7 @@ class TestScrapeTargetElementsMethod(unittest.TestCase):
 		self.assertEqual(self.scraped_specific, str(scraped_data))
 
 
-class TestScrapeMultipleElements(unittest.TestCase):
+class TestScrapeMultipleElementsFunction(unittest.TestCase):
 	def setUp(self):
 		self.html_document = helpers.return_html_document()
 		self.targets = {

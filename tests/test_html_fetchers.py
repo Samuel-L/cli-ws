@@ -27,7 +27,7 @@ def mocked_requests_get(*args, **kwargs):
 	return MockResponse(404, (404, 'Not Found'))
 
 
-class TestFetchHtmlDocument(unittest.TestCase):
+class TestFetchHtmlDocumentFunction(unittest.TestCase):
 	@mock.patch('web_scraper.core.html_fetchers.requests.get', side_effect=mocked_requests_get)
 	def test_returns_200_and_html(self, mock_get):
 		"""fetch_html_document should return 200 and html"""
