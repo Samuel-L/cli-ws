@@ -15,6 +15,7 @@ class TestSimplePrettifierFunction(unittest.TestCase):
 		self.soup = BeautifulSoup(html, 'html.parser')
 
 	def test_function_prettifies_data(self):
+		"""simple_prettifier should return prettified data"""
 		scraped_data = self.soup.find_all('h1')
 		prettified_data = prettifiers.simple_prettifier(scraped_data)
 
