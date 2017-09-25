@@ -7,6 +7,7 @@ from unittest import mock
 
 from web_scraper.core import file_handlers
 
+
 def mocked_random_randint(*args, **kwargs):
 	"""this method will be used by the mock to replace random.randint"""
 	return 1
@@ -50,6 +51,23 @@ class TestSaveDataToFileFunction(unittest.TestCase):
 			file = './data_1.csv'
 		
 		os.remove(file)
+
+
+class TestReadFileIntoList(unittest.TestCase):
+	def setUp(self):
+		self.test_data = ['data_1', 'data_2']
+		with open('./test_file.txt', 'w') as test_file:
+			for data in self.test_data:
+				test_file.write(f'{data}\n')
+
+	def test_returns_data_from_file(self):
+		"""read_file_into_list returns a list containing everything in the file"""
+		data_from_file = file_handlers.read_file_into_list('./test_file.txt')
+		self.assertEqual(self.test_data, data_from_file)
+
+	def tearDown(self):
+		if os.path.isfile('./test_file.txt'):
+			os.remove('./test_file.txt')
 
 
 if __name__ == '__main__':
