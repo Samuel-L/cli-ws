@@ -21,7 +21,8 @@ def save_data_to_file(data, filename='data', location='./'):
     with open(f'{location}{filename}', 'w') as data_file:
         for item in data:
             data_file.write(f'{item}\n')
-    return f'{location}\\{filename}'
+    
+    return os.path.abspath(f'{filename}')
 
 
 def read_file_into_list(file_location):
