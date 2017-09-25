@@ -55,6 +55,7 @@ class TestScrapeMultipleElements(unittest.TestCase):
 		self.scraped_multiple_targets = scraped_multiple.multiple_targets_elements
 
 	def test_scrapes_multiple_elements(self):
+		"""scrape_multiple_elements should return all elements specified in self.targets"""
 		scraped_data = scrapers.scrape_multiple_elements(self.html_document, self.targets)
 		self.assertEqual(self.scraped_multiple_targets, str(scraped_data))
 
