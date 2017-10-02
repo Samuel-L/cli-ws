@@ -44,8 +44,6 @@ class TestFetchHtmlDocumentFunction(unittest.TestCase):
 		html = response[0][1]
 
 		self.assertEqual((status_code, html), (404, 'Not Found'))
-
-
 		
 
 if __name__ == '__main__':
