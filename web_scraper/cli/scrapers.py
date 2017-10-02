@@ -11,13 +11,14 @@ from web_scraper.core import scrapers, html_fetchers, prettifiers, file_handlers
 @click.argument('url')
 @click.argument('target')
 @click.argument('target_type', type=click.Choice(['tag', 'class', 'id']))
+@click.option('--user-agent', default='python_requests.cli-ws', help='user agent that the request will be made with')
 @click.option('--no-prettify', is_flag=True, help='Returns the raw data. No prettifier applied.')
 @click.option('--regex', help='Apply this regular expression after the simple prettifer.')
 @click.option('--specific-tag', help='Only scrape data that uses this tag.')
 @click.option('--filename', default='data', help='Save the file with this name.')
 @click.option('--path', default='./', help='Save the file to this path.')
 @click.option('--dont-save', is_flag=True, help='Don\'t save the data to a file, only output it.')
-def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_save, specific_tag):
+def scrape(url, target, target_type, user_agent, no_prettify, regex, filename, path, dont_save, specific_tag):
 	"""Scrape the data from the given url
 
 	URL         The url of the website you wish to scrape
@@ -26,7 +27,7 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 
 	TARGET_TYPE The type of target you want to scrape (tag, class or id)
 	"""
-	status_code, html_document = html_fetchers.fetch_html_document(url)
+	status_code, html_document = html_fetchers.fetch_html_document(url, user_agent=user_agent)
 
 	scraped_data = scrapers.scrape_target_elements(html_document,
 		target=target,
