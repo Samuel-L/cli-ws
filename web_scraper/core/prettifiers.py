@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import re
 
 
-def simple_prettifier(scraped_data):
+def remove_html_tags(scraped_data):
     """Return more presentable data (in a list) provided by scrape_target_elements()
 
     :param bs4.element.ResultSet scraped_data: all of the data scraped by scrape_target_elements()
