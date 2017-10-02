@@ -26,7 +26,7 @@ def scrape(url, target, target_type, no_prettify, regex, filename, path, dont_sa
 
 	TARGET_TYPE The type of target you want to scrape (tag, class or id)
 	"""
-	html_document = str(html_fetchers.fetch_html_document(url))
+	status_code, html_document = html_fetchers.fetch_html_document(url)
 
 	scraped_data = scrapers.scrape_target_elements(html_document,
 		target=target,
