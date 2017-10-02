@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import click
 
-from web_scraper.core import task_handler
+from web_scraper.core import task_handlers
 from web_scraper.cli import helpers
 
 
