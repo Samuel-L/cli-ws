@@ -17,8 +17,8 @@ def fetch_html_document(url):
     try:
         response = requests.get(url)
         if response.status_code == requests.codes.ok:
-            return response.status_code, str(response.text) # html
+            return response.status_code, response.text # html
         else:
-            return response.status_code, str(response.text)
+            return response.status_code, response.text
     except Exception as err:
         return err
