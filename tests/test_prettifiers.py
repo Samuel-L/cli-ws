@@ -8,15 +8,15 @@ from bs4 import BeautifulSoup
 from web_scraper.core import prettifiers
 
 
-class TestSimplePrettifierFunction(unittest.TestCase):
+class TestRemoveHtmlTagsFunction(unittest.TestCase):
 	def setUp(self):
 		html = """<h1>H1 Tag</h1>, <h1 class="class-name">H1 Tag with class</h1>"""
 		self.soup = BeautifulSoup(html, 'html.parser')
 
 	def test_function_prettifies_data(self):
-		"""simple_prettifier should return prettified data"""
+		"""remove_html_tags should return prettified data"""
 		scraped_data = self.soup.find_all('h1')
-		prettified_data = prettifiers.simple_prettifier(scraped_data)
+		prettified_data = prettifiers.remove_html_tags(scraped_data)
 
 		self.assertEqual(['H1 Tag', 'H1 Tag with class'], prettified_data)
 
