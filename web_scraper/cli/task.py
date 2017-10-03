@@ -8,6 +8,7 @@ from web_scraper.cli import helpers
 
 
 def create(args):
+	"""Creates a task"""
 	logging.debug(f'Creating a task for you...')
 	task_handlers.create_task(args.name, args.url, args.target, args.target_type,
 		task_group=args.group, tag=args.tag, keep_tags=args.keep_tags,
@@ -17,11 +18,13 @@ def create(args):
 
 
 def remove(args):
+	"""Removes a task"""
 	logging.debug(f'Removing task {args.task}...')
 	task_handlers.remove_task(args.task)
 
 
 def show(args):
+	"""Logs out task(s)"""
 	if args.task == 'all':
 		tasks = task_handlers.return_task(all_tasks=True)
 		if tasks:
@@ -48,6 +51,7 @@ def show(args):
 
 
 def run(args):
+	"""Runs task(s)"""
 	if args.task == 'all':
 		tasks = task_handlers.return_task(all_tasks=True)
 		if tasks:
