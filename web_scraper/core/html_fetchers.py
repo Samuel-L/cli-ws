@@ -6,14 +6,15 @@ import requests
 
 
 def fetch_html_document(url, user_agent='python_requests.cli-ws'):
-    """Fetch html from url and return html
+    """Request html document from url
 
-    :param str url: an address to a resource on the Internet
-    :opt param str user_agent: user agent that the request will be made with
-    :return no except hit: status code and html of page (if exists)
-    :rtype: tuple
-    :return except hit: error
-    :rtype: str
+    Arguments:
+        url (str): a web address (http://example.com/)
+    Keyword Arguments:
+        user_agent (str): the user agent that will be sent with the
+            request (default: python_requests.cli-ws)
+    Return:
+        tuple: the status code of the response and the html document
     """
     response = requests.get(url, headers={'User-Agent': user_agent})
     
