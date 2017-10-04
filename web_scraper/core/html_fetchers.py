@@ -15,11 +15,7 @@ def fetch_html_document(url, user_agent='python_requests.cli-ws'):
     :return except hit: error
     :rtype: str
     """
-    try:
-        response = requests.get(url, headers={'User-Agent': user_agent})
-        if response.status_code == requests.codes.ok:
-            return response.status_code, response.text # html
-        else:
-            return response.status_code, response.text
-    except Exception as err:
-        return err
+    response = requests.get(url, headers={'User-Agent': user_agent})
+    
+    return response.status_code, response.text
+
