@@ -24,11 +24,12 @@ def ping_several_hosts(hosts_list):
 
 
 def ping(host):
-    """ Retrun True if host responds to a ping
-
-    :param str host: hostname
-    :return: True if host responds to ping, false if not
-    :rtype: Bool
+    """Return True if host responds to a ping
+    
+    Positional Arguments:
+        host (str): hostname
+    Return:
+        bool: True if host responds to ping, False if not
     """
     parameters = "-n 1" if system_name().lower() == "windows" else "-c 1"
 
