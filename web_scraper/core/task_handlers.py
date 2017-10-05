@@ -97,10 +97,12 @@ def return_task(task_name='', task_group='', all_tasks=False):
 
 
 def remove_task(task_name):
-	"""Remove the task
-	:param str task_name: name of the task
-	:return: true or false depending on if the task was removed
-	:rtype: bool
+	"""Remove task
+
+	Positional Argument:
+		task_name (str): name of the task
+	Return:
+		Nothing
 	"""
 	fieldnames = ['task_name', 'url', 'target', 'target_type',
 		'tag', 'keep_tags', 'regex', 'user_agent','filename',
