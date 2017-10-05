@@ -29,10 +29,11 @@ def save_data_to_file(data, filename='data', location='./'):
 
 def read_file_into_list(file_location):
     """Return list of elements from file
-
-    :param str file_location: location of the file containing the data
-    :return: list of elements from file
-    :rtype: list
+    
+    Positional Arguments:
+        file_location (str): location of the file containing the data
+    Return:
+        list: everything from the file
     """
     return_list = []
 
