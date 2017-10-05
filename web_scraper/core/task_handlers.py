@@ -11,6 +11,8 @@ def _create_task_file(name):
 
 	Positional Arguments:
 		name (str): the name of the taskfile
+	Return:
+		Nothing
 	"""
 	with open('taskfile.csv', 'w', newline='') as taskfile:
 		writer = csv.writer(taskfile, delimiter=',', quotechar='"',
