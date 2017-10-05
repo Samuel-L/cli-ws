@@ -4,10 +4,11 @@ from os import system as system_call
 
 def ping_several_hosts(hosts_list):
     """ Ping all hosts in hosts_list and return dict with statuses of hosts
-
-    :param list hosts_list: a list of hostnames
-    :return: dict containing hosts that works and hosts that doesn't work
-    :rtype: dict
+    
+    Positional Arguments:
+        host_lists (list): a list of hostnames
+    Return:
+        dict: dict containing hosts that works and hosts that doesn't work
     """
     WORKING = 1
     NOT_WORKING = 2
