@@ -61,12 +61,18 @@ def create_task(task_name, url, target,
 
 
 def return_task(task_name='', task_group='', all_tasks=False):
-	"""Return the task
-	:opt param str task_name: name of the task
-	:opt param str task_group: group name of one or more tasks
-	:opt param bool all_tasks: return all tasks
-	:return: the task or False
-	:rtype: OrderedDict or bool
+	"""Return task
+
+	Keyword Arguments:
+		task_name (str): name of the task
+		task_group (str): group name of one or more tasks
+		all_tasks (bool): return all tasks
+	Return:
+		OrderedDict (task_name is used): the task that matches
+			with that name
+		list (task_group is used): all of the tasks that
+			is that specific task_group
+		list (all_tasks is used): all of the tasks in the taskfile
 	"""
 	with open('taskfile.csv', 'r') as taskfile:
 		reader = csv.DictReader(taskfile)
@@ -75,17 +81,17 @@ def return_task(task_name='', task_group='', all_tasks=False):
 		if task_name:
 			for task in reader:
 				if task['task_name'] == task_name:
-					return task
+					return type(task)
 			return False
 		elif task_group:
 			for task in reader:
 				if task['task_group'] == task_group:
 					task_list.append(task)
-			return task_list
+			return type(task_list)
 		elif all_tasks:
 			for task in reader:
 				task_list.append(task)
-			return task_list
+			return type(task_list)
 		else:
 			return False
 
