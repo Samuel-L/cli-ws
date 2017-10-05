@@ -6,13 +6,15 @@ import random
 
 
 def save_data_to_file(data, filename='data', location='./'):
-    """Return true if data has been saved to file
-
-    :param list data: a list that contains data
-    :param str filename: the desired filename
-    :param str location: the desired location for the data file
-    :return: file location
-    :rtype: str
+    """Save data to file
+    
+    Positional Arguments:
+        data (list): list of data
+    Keyword Arguments:
+        filename (str): desired filename (default: data)
+        location (str): location of the data file (default: ./)
+    Return:
+        str: complete filepath to file
     """
     filename = f'{filename}_{random.randint(10000, 50000)}.csv'
     while os.path.isfile(filename):
