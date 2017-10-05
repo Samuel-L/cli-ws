@@ -9,8 +9,8 @@ def scrape_multiple_elements(html, targets):
     """Scrape multiple elements from the html document
     
     Positional Arguments:
-        html(str): standard html document
-        targets(dict): contains the target, target type and specific tag
+        html (str): standard html document
+        targets (dict): contains the target, target type and specific tag
             ex: {
                 1: {'target': '', 'target_type': '', 'specific_tag': ''}
                 2: {'target': '', 'target_type': '', 'specific_tag': ''}
@@ -37,15 +37,17 @@ def scrape_multiple_elements(html, targets):
 
 
 def scrape_target_elements(html, target, target_type, specific_tag=''):
-    """Scrape the target from the html
-
-    :param str html: standard html document
-    :param str target: name of tag, id or class
-    :param str target_type: tag (html element such as <li>, <p>), id or class
-    :param str specific_tag: (optional) if target_type is id or class, this argument
-    can be used to only scrape targets with this html tag
-    :return: all scraped targets
-    :rtype: bs4.element.ResultSet
+    """Scrape target from the html document
+    
+    Positional Arguments:
+        html (str): standard html document
+        target (str): name of tag, id or class
+        target_type (str): tag (html element such as <li>, <p>), id or class
+    Keyword Arguments:
+        specific_tag (str): if target_type is id or class, this keyword argument
+            can be used to only scrape targets with this html tag
+    Return:
+        bs4.element.ResultSet: all scraped targets
     """
     soup = BeautifulSoup(html, 'html.parser')
     if target_type == 'tag':
