@@ -7,8 +7,10 @@ import shutil
 
 
 def _create_task_file(name):
-	"""Create a taskfile
-	:param str name: the name of the taskfile
+	"""Creates a taskfile
+
+	Positional Arguments:
+		name (str): the name of the taskfile
 	"""
 	with open('taskfile.csv', 'w', newline='') as taskfile:
 		writer = csv.writer(taskfile, delimiter=',', quotechar='"',
