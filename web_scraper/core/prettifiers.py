@@ -20,13 +20,13 @@ def remove_html_tags(scraped_data):
 
 
 def regex_prettifier(scraped_data, regex):
-    """Return regex modified data (in a list).
+    """Prettify the scraped data using a regular expression
 
-    :param list scraped_data: all the scraped data
-    :param str regex: the regular expression you want to use to prettify the
-    data
-    :return: list of regex modified data
-    :rtype: list
+    Positional Arguments:
+        scraped_data (list): data scraped from a website
+        regex (str): a regular expression
+    Return:
+        list: the regex modified data
     """
     data_list = []
     for data in scraped_data:
