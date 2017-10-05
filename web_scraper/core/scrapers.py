@@ -57,12 +57,13 @@ def scrape_target_elements(html, target, target_type, specific_tag=''):
 
 
 def scrape_links(domain_name, html):
-    """Scrape all links from the html
+    """Scrape all links from the html document
 
-    :param str domain_name: the domain name of the website you're scraping
-    :param str html: standard html document
-    :return: all scraped links
-    :rtype: list
+    Positional Arguments:
+        domain_name (str): the domain name of the website you're scraping
+        html (str): standard html document
+    Return:
+        list: all scraped links
     """
     soup = BeautifulSoup(str(html), 'html.parser')
     link_list = []
