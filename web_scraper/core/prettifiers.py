@@ -6,11 +6,12 @@ import re
 
 
 def remove_html_tags(scraped_data):
-    """Return more presentable data (in a list) provided by scrape_target_elements()
+    """Remove html tags from the scraped data
 
-    :param bs4.element.ResultSet scraped_data: all of the data scraped by scrape_target_elements()
-    :return: list of presentable data
-    :rtype: list
+    Positional Arguments:
+        scraped_data (bs4.element.ResultSet): data scraped from a website
+    Return:
+        list: the data without the html tags
     """
     data_list = []
     for data in scraped_data:
