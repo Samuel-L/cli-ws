@@ -3,7 +3,7 @@ from os import system as system_call
 
 
 def ping_several_hosts(hosts_list):
-    """ Ping all hosts in hosts_list and return dict with statuses of hosts
+    """Ping all hosts in hosts_list and return dict with statuses of hosts
     
     Positional Arguments:
         host_lists (list): a list of hostnames
