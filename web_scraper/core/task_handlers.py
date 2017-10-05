@@ -28,19 +28,24 @@ def create_task(task_name, url, target,
 	keep_tags='', regex='', user_agent='', filename='', path='', dont_save=''):
 	"""Append a task to the taskfile
 
-	:param str task_name: the name of the task
-	:param str url: a standard website url
-	:param str target: the target for scraping
-	:param str target_type: the type of target (tag, class or id)
-	:opt param str task_group: the group of tasks this task should be added to
-	:opt param str tag: only scrape data from this tag
-	:opt param bool keep_tags: don't apply the simple prettifer
-	:opt param str regex: apply this regex after the simple prettifier
-	:opt param str user_agent: use this agent when sending get request
-	:opt param str filename: the name of the file that will contain the 
-	scraped data
-	:opt param str path: the path for the data file
-	:opt param bool dont_save: don't save the data to a file
+	Positional Arguments:
+		task_name (str): the name of the task
+		url (str): a web address (http://example.com/)
+		target (str): name of tag, id or class
+		target_type (str): tag (html element such as <li>, <p>), id or class
+	Keyword Arguments:
+		task_group (str): the group of tasks this task should be added to
+		tag (str): if target_type is id or class, this keyword argument
+            can be used to only scrape targets with this html tag
+		keep_tags (bool): don't remove the html tags
+		regex (str): a regular expression (applied after html tags has been removed)
+		user_agent(str): use this agent when sending get request
+		filename (str): the name of the file that will contain the 
+		scraped data
+		path (str): the path for the data file
+		dont_save (bool): don't save the data to a file
+	Return:
+		Nothing
 	"""
 	if not os.path.isfile('taskfile.csv'):
 		_create_task_file('taskfile.csv')
