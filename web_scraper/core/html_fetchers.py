@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 
 
-def fetch_html_document(url, user_agent='python_requests.cli-ws'):
+def fetch_html_document(url, user_agent='cli-ws/1.0'):
     """Request html document from url
 
     Positional Arguments:
