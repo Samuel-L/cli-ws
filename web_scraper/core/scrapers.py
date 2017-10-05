@@ -6,16 +6,17 @@ from bs4 import BeautifulSoup
 
 
 def scrape_multiple_elements(html, targets):
-    """Scrape multiple elements from the html
-
-    :param str html: standard html document
-    :param dict targets: contains the target, target type and specific tag
-        ex: {
-            1: {'target': '', 'target_type': '', 'specific_tag': ''}
-            2: {'target': '', 'target_type': '', 'specific_tag': ''}
-            }
-    :return: all scraped targets
-    :rtype: list
+    """Scrape multiple elements from the html document
+    
+    Positional Arguments:
+        html(str): standard html document
+        targets(dict): contains the target, target type and specific tag
+            ex: {
+                1: {'target': '', 'target_type': '', 'specific_tag': ''}
+                2: {'target': '', 'target_type': '', 'specific_tag': ''}
+                }
+    Return:
+        list: all of the scraped elements from the html document
     """
     scraped_elements = []
 
