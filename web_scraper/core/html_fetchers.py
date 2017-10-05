@@ -8,7 +8,7 @@ import requests
 def fetch_html_document(url, user_agent='python_requests.cli-ws'):
     """Request html document from url
 
-    Arguments:
+    Positional Arguments:
         url (str): a web address (http://example.com/)
     Keyword Arguments:
         user_agent (str): the user agent that will be sent with the
