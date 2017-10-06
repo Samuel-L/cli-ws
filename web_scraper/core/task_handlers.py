@@ -83,17 +83,17 @@ def return_task(task_name='', task_group='', all_tasks=False):
 		if task_name:
 			for task in reader:
 				if task['task_name'] == task_name:
-					return type(task)
+					return task
 			return False
 		elif task_group:
 			for task in reader:
 				if task['task_group'] == task_group:
 					task_list.append(task)
-			return type(task_list)
+			return task_list
 		elif all_tasks:
 			for task in reader:
 				task_list.append(task)
-			return type(task_list)
+			return task_list
 		else:
 			return False
 
