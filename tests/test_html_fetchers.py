@@ -6,6 +6,7 @@ import unittest
 from unittest import mock
 
 from web_scraper.core import html_fetchers
+from tests.test_files import html_doc
 
 
 def mocked_requests_get(*args, **kwargs):
@@ -22,7 +23,7 @@ def mocked_requests_get(*args, **kwargs):
 			return self.status_code
 
 	if args[0] == 'http://example.com/':
-		return MockResponse(200, (200, 'html'))
+		return MockResponse(200, (200, html_doc.doc))
 	
 	return MockResponse(404, (404, 'Not Found'))
 
@@ -35,7 +36,7 @@ class TestFetchHtmlDocumentFunction(unittest.TestCase):
 		status_code = response[0][0]
 		html = response[0][1]
 
-		self.assertEqual((status_code, html), (200, 'html'))
+		self.assertEqual((status_code, html), (200, html_doc.doc))
 	@mock.patch('web_scraper.core.html_fetchers.requests.get', side_effect=mocked_requests_get)
 	def test_returns_404_and_not_found(self, mock_get):
 		"""fetch_html_document should return 404 and 'Not Found'"""
