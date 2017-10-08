@@ -3,6 +3,7 @@ from setuptools import setup
 setup(name='cliws',
     version='1.0',
     description='A command line web scraper',
+    license='MIT',
     author='Samuel L',
     author_email='samuell.person@gmail.com',
     url='https://github.com/Samuel-L/web-scraper',
