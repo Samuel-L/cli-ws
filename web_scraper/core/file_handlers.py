@@ -1,13 +1,28 @@
-import os
+import os, errno
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import random
 
 
+def create_documents_folder():
+    """Create a folder in the users documents folder that will
+    hold the config file, scraped data and taskfile.
+
+    Return:
+        str: path to created folder
+    """
+    documents_folder_path = os.path.expanduser('~/Documents')
+    try:
+        os.makedirs(f'{documents_folder_path}/cli_ws_1.0.0')
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
+
 def save_data_to_file(data, filename='data', location='./'):
     """Save data to file
-    
+
     Positional Arguments:
         data (list): list of data
     Keyword Arguments:
@@ -23,13 +38,13 @@ def save_data_to_file(data, filename='data', location='./'):
     with open(f'{location}{filename}', 'w') as data_file:
         for item in data:
             data_file.write(f'{item}\n')
-    
+
     return os.path.abspath(f'{filename}')
 
 
 def read_file_into_list(file_location):
     """Return list of elements from file
-    
+
     Positional Arguments:
         file_location (str): location of the file containing the data
     Return:
