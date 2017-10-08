@@ -1,6 +1,10 @@
 # CLI-WS
 Cli-ws is a simple web scraper made for the command line.
 
+Prerequisite
+------------
+* Python 3.6
+
 Installation
 ------------
 1. Download (or clone) this repository
