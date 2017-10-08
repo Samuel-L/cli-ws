@@ -17,6 +17,5 @@ def fetch_html_document(url, user_agent='cli-ws/1.0'):
         tuple: the status code of the response and the html document
     """
     response = requests.get(url, headers={'User-Agent': user_agent})
-    
-    return response.status_code, response.text
 
+    return response.status_code, response.text
