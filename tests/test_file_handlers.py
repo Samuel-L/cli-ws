@@ -20,13 +20,13 @@ class TestSaveDataToFileFunction(unittest.TestCase):
 
 	@mock.patch('web_scraper.core.file_handlers.random.randint', side_effect=mocked_random_randint)
 	def test_creates_a_file(self, mock_random):
-		"""save_data_to_file creates a file"""
+		"""save_data_to_new_file creates a file"""
 		file_handlers.save_data_to_new_file(self.data)
 		self.assertTrue(os.path.isfile(f'{self.path_to_document_folder}/scraped_data/data_1.csv'))
 
 	@mock.patch('web_scraper.core.file_handlers.random.randint', side_effect=mocked_random_randint)
 	def test_saves_data_to_file(self, mock_random):
-		"""save_data_to_file saves data to created file"""
+		"""save_data_to_new_file saves data to created file"""
 		file_handlers.save_data_to_new_file(self.data)
 		with open(f'{self.path_to_document_folder}/scraped_data/data_1.csv', 'r') as test_file:
 			data_from_file = test_file.read().replace('\n', '')
@@ -34,13 +34,13 @@ class TestSaveDataToFileFunction(unittest.TestCase):
 
 	@mock.patch('web_scraper.core.file_handlers.random.randint', side_effect=mocked_random_randint)
 	def test_returns_location_of_created_file(self, mock_random):
-		"""save_data_to_file returns the location of the created file"""
+		"""save_data_to_new_file returns the location of the created file"""
 		path = file_handlers.save_data_to_new_file(self.data)
 		self.assertEqual(f'{self.path_to_document_folder}/scraped_data/data_1.csv', path)
 
 	@mock.patch('web_scraper.core.file_handlers.random.randint', side_effect=mocked_random_randint)
 	def test_takes_user_inputted_filename(self, mock_random):
-		"""save_data_to_file uses the filename given by the user when creating the file"""
+		"""save_data_to_new_file uses the filename given by the user when creating the file"""
 		filename = 'my_data'
 		file_handlers.save_data_to_new_file(self.data, filename=filename)
 		self.assertTrue(os.path.isfile(f'{self.path_to_document_folder}/scraped_data/my_data_1.csv'))
