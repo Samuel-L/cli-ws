@@ -10,7 +10,7 @@ from web_scraper.core import task_handlers, file_handlers
 def main():
 	documents_folder_path = os.path.expanduser('~/Documents/cli_ws_1.0.0')
 	if not os.path.isdir(documents_folder_path):
-		create_documents_folder()
+		file_handlers.create_documents_folder()
 
 	args = cli_parser.parse_options()
 
