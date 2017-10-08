@@ -19,6 +19,8 @@ def create_documents_folder():
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
+    finally:
+        return f'{documents_folder_path}/cli_ws_1.0.0'
 
 
 def save_data_to_file(data, filename='data', location='./'):
