@@ -23,6 +23,27 @@ def create_documents_folder():
         return f'{documents_folder_path}/cli_ws_1.0.0'
 
 
+def save_data_to_existing_file(data, file):
+    """Save data to existing file
+
+     Positional Arguments:
+        data (list): list of data
+        file (str): full path to file
+     Return:
+        tuple (sucess): (True, complete path to file)
+        tuple (failure): (False, empty string)
+    """
+    if os.path.isfile(file):
+        with open(file, 'a') as data_file:
+            for item in data:
+                data_file.write(f'{item}\n')
+        return (True, file)
+    else:
+        return (False, '')
+docu_path = create_documents_folder()
+status, file_p = save_data_to_existing_file(['hello world', 'hello'], f'{docu_path}/scraped_data/data.txt')
+print(status, file_p)
+
 def save_data_to_new_file(data, filename='data'):
     """Save data to new file
 

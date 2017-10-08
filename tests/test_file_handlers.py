@@ -12,6 +12,28 @@ def mocked_random_randint(*args, **kwargs):
 	"""this method will be used by the mock to replace random.randint"""
 	return 1
 
+class TestSaveDataToExistingFile(unittest.TestCase):
+	def setUp(self):
+		self.scraped_data_folder = file_handlers.create_documents_folder()
+		self.scraped_data_folder += '/scraped_data'
+
+		with open(f'{self.scraped_data_folder}/data.txt', 'w') as data_file:
+			data_file.write('first\n')
+
+	def test_appends_to_exisiting_file(self):
+		status, path = file_handlers.save_data_to_existing_file(['test_data'],
+			f'{self.scraped_data_folder}/data.txt')
+
+		with open(f'{self.scraped_data_folder}/data.txt', 'r') as data_file:
+			entire_file = data_file.read()
+
+		self.assertTrue(status)
+		self.assertTrue(os.path.isfile(path))
+		self.assertTrue('test_data' in entire_file)
+
+	def tearDown(self):
+		os.remove(f'{self.scraped_data_folder}/data.txt')
+
 
 class TestSaveDataToNewFileFunction(unittest.TestCase):
 	def setUp(self):
