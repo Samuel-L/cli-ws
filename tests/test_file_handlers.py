@@ -13,7 +13,7 @@ def mocked_random_randint(*args, **kwargs):
 	return 1
 
 
-class TestSaveDataToFileFunction(unittest.TestCase):
+class TestSaveDataToNewFileFunction(unittest.TestCase):
 	def setUp(self):
 		self.path_to_document_folder = file_handlers.create_documents_folder()
 		self.data = ['hello world']
