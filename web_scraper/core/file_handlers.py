@@ -63,21 +63,3 @@ def save_data_to_new_file(data, filename='data'):
             data_file.write(f'{item}\n')
 
     return full_path
-
-
-def read_file_into_list(file_location):
-    """Return list of elements from file
-
-    Positional Arguments:
-        file_location (str): location of the file containing the data
-    Return:
-        list: everything from the file
-    """
-    return_list = []
-
-    with open(file_location, 'r') as File:
-        for line in File:
-            line = line.strip()
-            return_list.append(line)
-
-    return return_list
