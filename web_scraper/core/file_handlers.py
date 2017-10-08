@@ -24,7 +24,7 @@ def create_documents_folder():
 
 
 def save_data_to_new_file(data, filename='data'):
-    """Save data to file
+    """Save data to new file
 
     Positional Arguments:
         data (list): list of data
