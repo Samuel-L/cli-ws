@@ -23,7 +23,7 @@ def create_documents_folder():
         return f'{documents_folder_path}/cli_ws_1.0.0'
 
 
-def save_data_to_file(data, filename='data'):
+def save_data_to_new_file(data, filename='data'):
     """Save data to file
 
     Positional Arguments:
