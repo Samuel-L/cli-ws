@@ -15,6 +15,7 @@ def create_documents_folder():
     documents_folder_path = os.path.expanduser('~/Documents')
     try:
         os.makedirs(f'{documents_folder_path}/cli_ws_1.0.0')
+        os.makedirs(f'{documents_folder_path}/cli_ws_1.0.0/scraped_data')
     except OSError as e:
         if e.errno != errno.EEXIST:
             raise
