@@ -8,35 +8,37 @@ from web_scraper.core import task_handlers
 
 class TestCreateTaskFunction(unittest.TestCase):
 	def setUp(self):
+		self.documents_folder_path = os.path.expanduser('~/Documents/cli_ws_1.0.0')
 		task_handlers.create_task('task name', 'website url', 'target', 'target type')
 
 	def test_creates_a_file_if_none_exists(self):
-		self.assertTrue(os.path.isfile('./taskfile.csv'))
+		self.assertTrue(os.path.isfile(f'{self.documents_folder_path}/taskfile.csv'))
 
 	def test_creates_a_file_with_correct_column_names(self):
-		with open('./taskfile.csv' , 'r') as taskfile:
+		with open(f'{self.documents_folder_path}/taskfile.csv' , 'r') as taskfile:
 			entire_file = taskfile.read()
 			self.assertTrue('task_name,url,target,target_type,tag,keep_tags,regex,user_agent,filename,path,dont_save,task_group' in entire_file)
 
 	def test_saves_task_to_file(self):
-		with open('./taskfile.csv', 'r') as taskfile:
+		with open(f'{self.documents_folder_path}/taskfile.csv', 'r') as taskfile:
 			entire_file = taskfile.read()
 			self.assertTrue('"task name","website url","target","target type","","","","","","","",""' in entire_file)
 
 	def test_saves_consecutive_tasks_in_already_created_file(self):
 		task_handlers.create_task('second task', 'website url', 'target', 'target type')
-		
-		with open('./taskfile.csv', 'r') as taskfile:
+
+		with open(f'{self.documents_folder_path}/taskfile.csv', 'r') as taskfile:
 			entire_file = taskfile.read()
 			self.assertTrue('"task name","website url","target","target type","","","","","","","",""' in entire_file)
 			self.assertTrue('"second task","website url","target","target type","","","","","","","",""' in entire_file)
 
 	def tearDown(self):
-		os.remove('./taskfile.csv')
+		os.remove(f'{self.documents_folder_path}/taskfile.csv')
 
 
 class TestReturnTaskFunction(unittest.TestCase):
 	def setUp(self):
+		self.documents_folder_path = os.path.expanduser('~/Documents/cli_ws_1.0.0')
 		task_handlers.create_task('task name 1', 'website url', 'target', 'target type', task_group='a')
 		task_handlers.create_task('task name 2', 'website url', 'target', 'target type', task_group='a')
 		task_handlers.create_task('task name 3', 'website url', 'target', 'target type', task_group='b')
@@ -63,11 +65,12 @@ class TestReturnTaskFunction(unittest.TestCase):
 			self.assertTrue(name in task['task_name'])
 
 	def tearDown(self):
-		os.remove('./taskfile.csv')
+		os.remove(f'{self.documents_folder_path}/taskfile.csv')
 
 
 class TestRemoveTaskFunction(unittest.TestCase):
 	def setUp(self):
+		self.documents_folder_path = os.path.expanduser('~/Documents/cli_ws_1.0.0')
 		task_handlers.create_task('task name 1', 'website url', 'target', 'target type', task_group='a')
 		task_handlers.create_task('task name 2', 'website url', 'target', 'target type', task_group='a')
 		task_handlers.create_task('task name 3', 'website url', 'target', 'target type', task_group='b')
@@ -76,12 +79,12 @@ class TestRemoveTaskFunction(unittest.TestCase):
 
 	def test_removes_task_by_name(self):
 		task_handlers.remove_task('task name 1')
-		with open('./taskfile.csv', 'r') as taskfile:
+		with open(f'{self.documents_folder_path}/taskfile.csv', 'r') as taskfile:
 			entire_file = taskfile.read()
 			self.assertTrue('"task name 1"' not in entire_file)
 
 	def tearDown(self):
-		os.remove('./taskfile.csv')
+		os.remove(f'{self.documents_folder_path}/taskfile.csv')
 
 
 if __name__ == '__main__':
