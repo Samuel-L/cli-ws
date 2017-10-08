@@ -13,7 +13,7 @@ def scrape(url, target, target_type, specific_tag, regex, user_agent, filename,
 	logging.debug(f'Scraping data from {url}...')
 
 	status_code, html_document = html_fetchers.fetch_html_document(url, user_agent=user_agent)
-	
+
 	if status_code == requests.codes.ok:
 		scraped_data = scrapers.scrape_target_elements(html_document, target=target,
 			target_type=target_type,
@@ -30,9 +30,8 @@ def scrape(url, target, target_type, specific_tag, regex, user_agent, filename,
 			for data in scraped_data:
 				logging.info(data)
 		else:
-			created_file_path = file_handlers.save_data_to_file(scraped_data,
+			created_file_path = file_handlers.save_data_to_new_file(scraped_data,
 				filename=filename,
-				location=path
 			)
 			logging.info(f'Data saved to {created_file_path}')
 	else:
