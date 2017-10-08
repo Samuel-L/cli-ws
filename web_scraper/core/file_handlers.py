@@ -40,9 +40,7 @@ def save_data_to_existing_file(data, file):
         return (True, file)
     else:
         return (False, '')
-docu_path = create_documents_folder()
-status, file_p = save_data_to_existing_file(['hello world', 'hello'], f'{docu_path}/scraped_data/data.txt')
-print(status, file_p)
+
 
 def save_data_to_new_file(data, filename='data'):
     """Save data to new file
