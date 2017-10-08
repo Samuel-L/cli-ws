@@ -23,7 +23,7 @@ def create_documents_folder():
         return f'{documents_folder_path}/cli_ws_1.0.0'
 
 
-def save_data_to_file(data, filename='data', location='./'):
+def save_data_to_file(data, filename='data'):
     """Save data to file
 
     Positional Arguments:
@@ -38,11 +38,12 @@ def save_data_to_file(data, filename='data', location='./'):
     while os.path.isfile(filename):
         filename = f'{filename}_{random.randint(10000, 50000)}.csv'
 
-    with open(f'{location}{filename}', 'w') as data_file:
+    full_path = os.path.expanduser(f'~/Documents/cli_ws_1.0.0/scraped_data/{filename}')
+    with open(full_path, 'w') as data_file:
         for item in data:
             data_file.write(f'{item}\n')
 
-    return os.path.abspath(f'{filename}')
+    return full_path
 
 
 def read_file_into_list(file_location):
