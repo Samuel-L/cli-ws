@@ -6,7 +6,7 @@ Installation
 1. Download (or clone) this repository
 2. Extract the cli-ws folder
 3. Navigate to the extracted folder
-5. Run `$ python setup.py`
+5. Run `$ python setup.py install`
 
 Usage
 ------------
