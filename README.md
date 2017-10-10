@@ -41,8 +41,9 @@ commands (positional arguments):
 Tests
 ------------
 1. Install [nose](http://nose.readthedocs.io/en/latest/)
-2. Navigate to the `cli-ws` folder
-3. Run `nosetests tests/`
+2. Run `pip install -r requirements.txt`
+3. Navigate to the `cli-ws` folder
+4. Run `nosetests tests/`
 
 ## License
 
