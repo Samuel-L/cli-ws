@@ -45,20 +45,5 @@ class TestScrapeTargetElementsFunction(unittest.TestCase):
 		self.assertEqual(self.scraped_specific, str(scraped_data))
 
 
-class TestScrapeMultipleElementsFunction(unittest.TestCase):
-	def setUp(self):
-		self.html_document = helpers.return_html_document()
-		self.targets = {
-			1: {'target': 'class-name', 'target_type': 'class', 'specific_tag': ''},
-			2: {'target': 'id-name', 'target_type': 'id', 'specific_tag': ''}
-		}
-		self.scraped_multiple_targets = scraped_multiple.multiple_targets_elements
-
-	def test_scrapes_multiple_elements(self):
-		"""scrape_multiple_elements should return all elements specified in self.targets"""
-		scraped_data = scrapers.scrape_multiple_elements(self.html_document, self.targets)
-		self.assertEqual(self.scraped_multiple_targets, str(scraped_data))
-
-
 if __name__ == '__main__':
 	unittest.main()
