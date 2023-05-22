@@ -10,7 +10,7 @@ setup(name='cliws',
     packages=['web_scraper.core', 'web_scraper.cli', 'web_scraper'],
     install_requires=[
         'beautifulsoup4==4.6.0',
-        'requests==2.20.0',
+        'requests==2.31.0',
     ],
     entry_points='''
         [console_scripts]
